@@ -1,15 +1,18 @@
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
 const db = require('./db');
 const controllers = require('./appControllers');
+
+dotenv.config({path: './config/config.env'});
 
 const app = express();
 
 app.use(cors())
 app.use(express.json());
-
 
 global.__basedir = __dirname;
 
@@ -126,10 +129,16 @@ app.get('/api/filter5', (req, res) => {
   })
 })
 
-app.listen(8000, () => {
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+}
+
+
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => {
   console.log("App listening on port 8000")
 })
 
-// app.listen(8080, () => {
-//   console.log("App listening on port 8080")
-// })
