@@ -1,0 +1,3 @@
+[submodule "clientFrontEnd"]
+	path = clientFrontEnd
+	url = https://github.com/gafargits/Ven10Client.git

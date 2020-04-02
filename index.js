@@ -1,10 +1,15 @@
 const fs = require('fs');
 const express = require('express');
+const cors = require('cors');
 
 const db = require('./db');
 const controllers = require('./appControllers');
 
 const app = express();
+
+app.use(cors())
+app.use(express.json());
+
 
 global.__basedir = __dirname;
 
@@ -121,7 +126,10 @@ app.get('/api/filter5', (req, res) => {
   })
 })
 
-
-app.listen(8080, () => {
-  console.log("App listening on port 8080")
+app.listen(8000, () => {
+  console.log("App listening on port 8000")
 })
+
+// app.listen(8080, () => {
+//   console.log("App listening on port 8080")
+// })
