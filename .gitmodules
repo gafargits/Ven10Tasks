@@ -1,3 +1,6 @@
 [submodule "clientFrontEnd"]
 	path = clientFrontEnd
 	url = https://github.com/gafargits/Ven10Client.git
+[submodule "client"]
+	path = client
+	url = https://github.com/gafargits/Ven10Client.git
